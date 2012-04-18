@@ -12,7 +12,7 @@ module Resque
     alias_method :push_without_timestamps, :push
     def push(queue, item)
       if item.respond_to?(:[]=)
-        item[:created_at] = Time.now.to_i
+        item[:created_at] = Time.now.to_f
       end
       push_without_timestamps queue, item
     end
@@ -23,7 +23,7 @@ module Resque
       @queue = queue
       @payload = payload
       if $resque_statsd && @payload["created_at"]
-        $resque_statsd.timing "#{@queue}.queue_time", 1000 * (Time.now.to_i - @payload["created_at"].to_i)
+        $resque_statsd.timing "#{@queue}.queue_time", (1000 * (Time.now.to_f - @payload["created_at"].to_i)).round
       end
     end
   end
