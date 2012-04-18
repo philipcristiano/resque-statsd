@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'resque-statsd'
-  s.version = '0.0.1'
+  s.version = '0.1.0'
   s.author = 'Jason Amster'
   s.email = 'jayamster@gmail.com'
   s.summary = 'Resque Statsd is a Resque plugin that will collect and send data samples from your Resque Jobs to statsd'
