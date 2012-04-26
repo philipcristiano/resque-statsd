@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'benchmark'
 require 'statsd'
 require 'resque/plugins/statsd'
 require 'resque'
