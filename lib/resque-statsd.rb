@@ -6,7 +6,7 @@ require 'resque'
 
 # Set up the client
 $resque_statsd = Statsd.new(ENV['GRAPHITE_HOST'], 8125)
-$resque_statsd.namespace="#{ENV['APP_NAME']}_#{ENV['RAILS_ENV']}.resque"
+$resque_statsd.namespace="#{ENV['APP_NAME']}.resque"
 
 module Resque
   class << self
