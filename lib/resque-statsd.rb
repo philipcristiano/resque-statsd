@@ -23,6 +23,7 @@ module Resque
     def initialize(queue, payload)
       @queue = queue
       @payload = payload
+      @failure_hooks_ran = false
       if $resque_statsd && @payload["created_at"]
         $resque_statsd.timing "#{@queue}.#{payload_class}.queue_time", (1000 * (Time.now.to_f - @payload["created_at"].to_i)).round
       end
