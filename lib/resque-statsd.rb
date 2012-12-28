@@ -24,8 +24,7 @@ module Resque
       @queue = queue
       @payload = payload
       if $resque_statsd && @payload["created_at"]
-        $resque_statsd.timing "#{@queue}.queue_time", (1000 * (Time.now.to_f - @payload["created_at"].to_i)).round
-        $resque_statsd.timing "#{payload_class}.queue_time", (1000 * (Time.now.to_f - @payload["created_at"].to_i)).round
+        $resque_statsd.timing "#{@queue}.#{payload_class}.queue_time", (1000 * (Time.now.to_f - @payload["created_at"].to_i)).round
       end
     end
   end
